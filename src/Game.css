@@ -1,0 +1,116 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+}
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.control-panel {
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.control-panel button {
+    margin: 5px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+.game-area {
+    position: relative;
+    width: 600px;
+    height: 600px;
+    border: 2px solid black;
+    background: white;
+}
+
+.circle {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    transition: background-color 0.2s;
+}
+
+.circle.clicked {
+    background-color: #4caf50;
+    border-color: #4caf50;
+}
+
+.circle.active {
+    background-color: rgba(255, 0, 0, 0.5);
+}
+
+.number {
+    position: absolute;
+    top: 30%;
+    font-size: 14px;
+}
+
+.timer {
+    position: absolute;
+    bottom: 2px;
+    font-size: 10px;
+    color: yellow;
+}
+
+
+.next-number {
+    margin-top: 10px;
+    font-size: 18px;
+}
+.circle {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    transition: background-color 0.2s;
+}
+
+.circle.clicked {
+    background-color: #4caf50;
+    border-color: #4caf50;
+}
+
+.circle.active {
+    background-color: white;
+}
+
+.number {
+    position: absolute;
+    top: 30%;
+    font-size: 14px;
+}
+
+.timer {
+    position: absolute;
+    bottom: 2px;
+    font-size: 10px;
+    color: yellow;
+}
+.status-success {
+    color: green;
+}
+
+.status-fail {
+    color: red;
+}
