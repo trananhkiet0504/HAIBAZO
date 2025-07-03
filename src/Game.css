@@ -114,3 +114,42 @@ body {
 .status-fail {
     color: red;
 }
+
+/* Responsive for mobile */
+@media (max-width: 700px) {
+    .game-area {
+        width: 90vw;
+        height: 90vw;
+        max-width: 98vw;
+        max-height: 98vw;
+        min-width: 220px;
+        min-height: 220px;
+    }
+    .circle {
+        width: 9vw;
+        height: 9vw;
+        min-width: 24px;
+        min-height: 24px;
+        max-width: 50px;
+        max-height: 50px;
+        font-size: 3vw;
+    }
+    .number {
+        font-size: 3vw;
+    }
+    .timer {
+        font-size: 2vw;
+    }
+    .control-panel button {
+        padding: 6px 10vw;
+        font-size: 4vw;
+        min-width: 80px;
+    }
+    .next-number {
+        font-size: 4vw;
+    }
+    .control-panel input[type="number"] {
+        width: 40px;
+        font-size: 4vw;
+    }
+}

@@ -129,7 +129,14 @@ const Game = () => {
                     <input 
                         type="number" 
                         value={points} 
-                        onChange={(e) => setPoints(Number(e.target.value))} 
+                        onChange={(e) => {
+                            const val = e.target.value.replace(/^0+/, ''); // loại bỏ số 0 đầu
+                            if (val === '' || Number(val) < 1) {
+                                setPoints(1);
+                            } else {
+                                setPoints(Number(val));
+                            }
+                        }} 
                         min="1"
                     />
                 </div>
