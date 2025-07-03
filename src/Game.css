@@ -118,27 +118,29 @@ body {
 /* Responsive for mobile */
 @media (max-width: 700px) {
     .game-area {
-        width: 90vw;
-        height: 90vw;
-        max-width: 98vw;
-        max-height: 98vw;
+        width: 95vw;
+        height: 95vw;
+        max-width: 99vw;
+        max-height: 99vw;
         min-width: 220px;
         min-height: 220px;
+        padding: 2vw;
+        box-sizing: border-box;
     }
     .circle {
-        width: 9vw;
-        height: 9vw;
-        min-width: 24px;
-        min-height: 24px;
-        max-width: 50px;
-        max-height: 50px;
-        font-size: 3vw;
+        width: 12vw;
+        height: 12vw;
+        min-width: 32px;
+        min-height: 32px;
+        max-width: 48px;
+        max-height: 48px;
+        font-size: 4vw;
     }
     .number {
-        font-size: 3vw;
+        font-size: 4vw;
     }
     .timer {
-        font-size: 2vw;
+        font-size: 2.5vw;
     }
     .control-panel button {
         padding: 6px 10vw;

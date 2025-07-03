@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import './Game.css';
 
 const Game = () => {
@@ -10,6 +10,7 @@ const Game = () => {
     const [autoPlay, setAutoPlay] = useState(false);
     const [status, setStatus] = useState("LET'S PLAY");
     const [hasStarted, setHasStarted] = useState(false);
+    const gameAreaRef = useRef(null);
     //Kích hoạt tự động click khi chế độ Auto Play được bật (useEffect)
     useEffect(() => { 
         if (autoPlay && isPlaying) {
@@ -32,32 +33,39 @@ const Game = () => {
             return () => clearInterval(timer); // Xóa bộ đếm khi kết thúc trò chơi
         }
     }, [isPlaying]);
-// Lấy vị trí ngẫu nhiên cho các ô tròn
-    const getRandomPosition = () => {
-        const areaSize = 600;
-        const circleSize = 50;
+// Lấy vị trí ngẫu nhiên cho các ô tròn, truyền kích thước động
+    const getRandomPosition = (areaSize = 600, circleSize = 50) => {
         const maxPos = areaSize - circleSize;
-
         const x = Math.floor(Math.random() * maxPos);
         const y = Math.floor(Math.random() * maxPos);
-
         return { x, y };
     };
 // Khởi tạo trò chơi
     const initializeGame = () => {
+        let areaSize = 600;
+        let circleSize = 50;
+        if (gameAreaRef.current) {
+            areaSize = Math.min(gameAreaRef.current.offsetWidth, gameAreaRef.current.offsetHeight);
+            // Lấy kích thước circle động theo CSS
+            const style = window.getComputedStyle(gameAreaRef.current);
+            const circle = document.createElement('div');
+            circle.className = 'circle';
+            document.body.appendChild(circle);
+            circleSize = circle.offsetWidth;
+            document.body.removeChild(circle);
+        }
         const newCircles = Array.from({ length: points }, (_, index) => {
-            const { x, y } = getRandomPosition();
+            const { x, y } = getRandomPosition(areaSize, circleSize);
             return {
                 number: index + 1,
-                visible: true, // Tắt các ô tròn
-                time: 2.5, // Thời gian hiển thị số trên mỗi ô tròn
-                clicked: false, // Trạng thái đã nhấn vào ô tròn
-                fadeOut: false, // Trạng thái mờ dần
-                position: { x, y }, // Vị trí của ô tròn
-                showTime: false // Hiển thị thời gian trên ô tròn
+                visible: true,
+                time: 2.5,
+                clicked: false,
+                fadeOut: false,
+                position: { x, y },
+                showTime: false
             };
         });
-
         setCircles(newCircles);
         setCurrent(1);
         setElapsedTime(0);
@@ -154,7 +162,7 @@ const Game = () => {
                 )}
             </div>
 
-            <div className="game-area">
+            <div className="game-area" ref={gameAreaRef}>
                 {hasStarted && circles.map(circle => (
                     circle.visible && (
                         <div 
